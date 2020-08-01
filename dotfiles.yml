@@ -24,6 +24,6 @@
     - role: neovim
       tags:
         - neovim
-    - role: ranger
+    - role: do1jlr.ranger
       tags:
         - ranger
