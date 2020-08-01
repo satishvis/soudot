@@ -11,3 +11,5 @@ base_packages:
   - ca-certificates
   - gnupg2
   - software-properties-common
+  - ncdu
+  - ranger

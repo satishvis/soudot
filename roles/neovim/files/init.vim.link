@@ -39,6 +39,12 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vim-airline/vim-airline-themes'           " VIm airline themes
   Plug 'tpope/vim-fugitive'                       " Git command wrapper
   Plug 'junegunn/fzf.vim'                         " FZF support.
+  Plug 'francoiscabrol/ranger.vim'
+  Plug 'python-mode/python-mode', {'for': 'python', 'branch': 'develop'}
+  Plug 'satishvis/vim-better-default'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-unimpaired'
+  Plug 'ycm-core/youcompleteme', {'do': './install.py'}
 
 
   " Custom plugins
@@ -63,3 +69,21 @@ nnoremap ;; :
 let laststatus=2
 let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts=1
+
+" Ranger {{{1
+let g:ranger_map_keys = 0
+let g:NERDTreeHijackNetrw = 0
+let g:ranger_replace_netrw = 1
+nnoremap <silent> <leader>r :Ranger<CR>
+" let g:ranger_command_override = 'ranger --cmd "set viewmode=multipane"'
+"}}}1
+
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+nnoremap <leader>pp :ProjectFiles<CR>
+nnoremap <leader>oo :only<CR>
+
