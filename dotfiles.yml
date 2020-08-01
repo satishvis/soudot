@@ -24,3 +24,6 @@
     - role: neovim
       tags:
         - neovim
+    - role: ranger
+      tags:
+        - ranger
