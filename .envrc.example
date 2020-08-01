@@ -1,0 +1,4 @@
+export DOTFILES_BOOTSTRAP_USER="ubuntu"
+export DOTFILES_BOOTSTRAP_GIT_NAME="<gitusername>"
+export DOTFILES_BOOTSTRAP_GIT_EMAIL="<gitemailid>"
+
