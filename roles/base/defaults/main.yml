@@ -13,4 +13,3 @@ base_packages:
   - software-properties-common
   - xsel
   - ncdu
-  - ranger
