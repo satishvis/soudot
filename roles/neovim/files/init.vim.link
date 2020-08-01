@@ -1,0 +1,65 @@
+""""""""""""""
+" Basic config
+
+set nocompatible            " disable compatibility to old-time vi
+set showmatch               " show matching brackets.
+set hlsearch                " highlight search results
+set smartcase
+set ignorecase
+set incsearch
+set tabstop=4               " number of columns occupied by a tab character
+set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
+set expandtab               " converts tabs to white space
+set shiftwidth=4            " width for autoindents
+set autoindent              " indent a new line the same amount as the line just typed
+set number                  " add line numbers
+set wildmode=longest,list   " get bash-like tab completions
+set colorcolumn=80          " set an 80 column border
+set textwidth=79            " text width
+set encoding=utf-8          " Encoding UTF-8
+set fileencoding=utf-8      " File encoding UTF-8
+syntax on                   " syntax highlighting
+
+""""""""""
+" Load FZF
+
+source /usr/share/doc/fzf/examples/fzf.vim
+
+"""""""""""""""
+" Load vim-plug
+
+set rtp+=~/.config/nvim/bootstrap/vim-plug/plug.vim
+
+""""""""""""""""""""""""""
+" Declare vim-plug plugins
+
+call plug#begin('~/.config/nvim/plugged')
+
+  Plug 'vim-airline/vim-airline'                  " VIm airline status bar
+  Plug 'vim-airline/vim-airline-themes'           " VIm airline themes
+  Plug 'tpope/vim-fugitive'                       " Git command wrapper
+  Plug 'junegunn/fzf.vim'                         " FZF support.
+
+
+  " Custom plugins
+
+  " Survey language
+
+call plug#end()
+
+""""""""""""
+" FZF config
+
+let mapleader = ','
+noremap <Leader>ff :FZF<CR>
+inoremap jk <ESC>
+nnoremap ,w :update<CR>
+cmap w!! !sudo tee > /dev/null %
+nnoremap ;; :
+
+""""""""""""""""""""
+" VIm Airline config
+
+let laststatus=2
+let g:airline_theme='jellybeans'
+let g:airline_powerline_fonts=1

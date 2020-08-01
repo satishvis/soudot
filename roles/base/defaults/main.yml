@@ -1,0 +1,13 @@
+base_repositories:
+  - "deb http://archive.ubuntu.com/ubuntu/ focal main"
+  - "deb-src http://archive.ubuntu.com/ubuntu/ focal main"
+  - "deb http://archive.ubuntu.com/ubuntu/ focal-security main"
+  - "deb-src http://archive.ubuntu.com/ubuntu/ focal-security main"
+
+base_packages:
+  - curl
+  - wget
+  - apt-transport-https
+  - ca-certificates
+  - gnupg2
+  - software-properties-common
