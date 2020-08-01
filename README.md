@@ -1,5 +1,9 @@
 # Dotfiles
 
+Complete rip of https://github.com/alexdesousa/dotfiles
+
+Completely acknowledge and respect.
+
 > In computing, a hidden folder or hidden file is a folder or file which
 > filesystem utilities do not display by default when showing a directory
 > listing.
@@ -7,7 +11,7 @@
 > They are commonly used for storing user preferences or preserving the state of
 > a utility, and are frequently created implicitly by using various utilities.
 
-This repository configures **Debian Testing** in my laptop automatically using
+This repository configures **Ubuntu Focal** in my laptop automatically using
 Ansible e.g:
 
 ```
@@ -22,8 +26,6 @@ root of this project.
 export DOTFILES_BOOTSTRAP_USER="<OS username>"
 export DOTFILES_BOOTSTRAP_GIT_NAME="<Git name>"
 export DOTFILES_BOOTSTRAP_GIT_EMAIL="<Git email>"
-export DOTFILES_BOOTSTRAP_ZSH_OATH_KEY="<Oath key>"
-export DOTFILES_BOOTSTRAP_ZSH_OATH_EMAIL="<Oath email>"
 ```
 
 > **NOTE**: The reason for not having defaults for these variables is to avoid
@@ -33,7 +35,7 @@ When `./bin/bootstrap.sh` is executed with a tag, will install all roles
 necessary for that tag. This is useful for specific updates e.g:
 
 ```
-# ./bin/bootstrap.sh -t erlang
+# ./bin/bootstrap.sh -t zsh
 ```
 
 > For more information just run `./bin/bootstrap.sh -h`
@@ -48,7 +50,6 @@ with the overrides inside e.g:
 
 docker_compose_version: 1.25.3
 fzf_bat_version: 0.12.0
-asdf_version: 0.7.4
 ```
 
 ## Base Role
@@ -56,8 +57,8 @@ asdf_version: 0.7.4
 Installs and configures my base system. The available `vars/custom.yml`
 overrides are:
 
-- `base_repositories`: Defaults to the repositories for Debian Testing.
-- `base_dependencies`: Defaults to the base dependencies for my laptop.
+- `base_repositories`: Defaults to the repositories for Focal. 
+- `base_dependencies`: Defaults to some default base dependencies.
 
 ## Git Role
 
@@ -73,11 +74,7 @@ Relevant files:
 
 ## ZSH Role
 
-Installs and configures ZSH with `oh-my-zsh`. For using
-[oath zsh plugin](https://github.com/alexdesousa/oath) these variables are needed:
-
-- `$DOTFILES_BOOTSTRAP_ZSH_OATH_KEY_`: Oath key.
-- `$DOTFILES_BOOTSTRAP_ZSH_OATH_EMAIL`: Oath email.
+Installs and configures ZSH with `oh-my-zsh`. 
 
 Relevant files:
 
@@ -86,12 +83,8 @@ Relevant files:
 
 Other relevant files gathered from other roles:
 
-- `roles/asdf/files/asdf.zsh`: ASDF configuration.
-- `roles/erlang/files/erlang.zsh`: Erlang configuration.
 - `roles/docker/files/docker.zsh`: Docker configuration.
 - `roles/fzf/files/fzf.zsh`: FZF configuration.
-- `roles/flutter/files/flutter.zsh`: Flutter configuration.
-- `roles/microsoft/files/microsoft.zsh`: Microsoft configuration.
 
 ## Tmux Role
 
@@ -117,68 +110,16 @@ Installs and configures docker. The available `vars/custom.yml` overrides are:
 - `docker_packages`: Defaults to docker's packages to be installed.
 - `docker_compose_version`: `docker-compose` version to be used.
 
-## ASDF Role
-
-Installs and configures asdf. The available `vars/custom.yml` overrides are:
-
-- `asdf_version`: `asdf` version to be used.
-
-> **NOTE**: For roles depending on `asdf` role, they have the following
-> variables available:
->
-> - `asdf_dir`: `asdf` directory.
-> - `asdf_bin`: `asdf` binary.
-> - `asdf_src`: `source`-able `asdf` script to load `asdf` commands in current
->   shell.
-
-## Erlang Role
-
-Installs and configures Erlang. The available `vars/custom.yml` overrides are:
-
-- `erlang_dependencies`: Erlang apt dependencies.
-- `erlang_versions`: Erlang versions to be used.
-
-## Elixir Role
-
-Instals and configures Elixir. The available `vars/custom.yml` overrides are:
-
-- `elixir_versions`: Elixir versions to be used.
-
-## NodeJS Role
-
-Instals and configures NodeJS. The available `vars/custom.yml` overrides are:
-
-- `nodejs_dependencies`: NodeJS apt dependencies.
-- `nodejs_versions`: NodeJS versions to be used.
-
-## Haskell Role
-
-Installs and configures Haskell. The available `vars/custom.yml` overrides are:
-
-- `haskell_versions`: Haskell versions to be used.
-
 ## NeoVIm Role
 
 Installs and configures Neovim and its plugins.
 
 Relevant files:
 
-- `roles/neovim/files/init.vim.link`: File for Neovim configuration.
-- `roles/neovim/files/tabs.vim.link`: Tab numbers configuration.
-- `roles/neovim/files/mkdir.vim.link`: Automatically creates directories on
-  file creation when they don't exist.
-- `roles/neovim/files/elixir-ls.vim.link`: Automatically downloads and compiles
-  Elixir's language server.
-- `roles/neovim/files/coc.vim.link`: coc.nvim configuration.
-- `roles/neovim/files/coc-settings.json.link`: coc.nvim JSON configuration.
-
-## Visual Code Role
-
-Installs Visual Code and configures it.
-
 ## Author
 
-Alexander de Sousa.
+Orignal : Alexander de Sousa.
+This version: Satish Viswanathan
 
 ## License
 
