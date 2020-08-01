@@ -35,17 +35,17 @@ set rtp+=~/.config/nvim/bootstrap/vim-plug/plug.vim
 
 call plug#begin('~/.config/nvim/plugged')
 
+  Plug 'satishvis/vim-better-default'
   Plug 'vim-airline/vim-airline'                  " VIm airline status bar
   Plug 'vim-airline/vim-airline-themes'           " VIm airline themes
   Plug 'tpope/vim-fugitive'                       " Git command wrapper
   Plug 'junegunn/fzf.vim'                         " FZF support.
   Plug 'francoiscabrol/ranger.vim'
   Plug 'python-mode/python-mode', {'for': 'python', 'branch': 'develop'}
-  Plug 'satishvis/vim-better-default'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-unimpaired'
-  Plug 'ycm-core/youcompleteme', {'do': './install.py'}
-
+  Plug 'davidhalter/jedi-vim'
+  Plug 'ervandew/supertab'
 
   " Custom plugins
 
@@ -58,9 +58,7 @@ call plug#end()
 
 let mapleader = ','
 noremap <Leader>ff :FZF<CR>
-inoremap jk <ESC>
 nnoremap ,w :update<CR>
-cmap w!! !sudo tee > /dev/null %
 nnoremap ;; :
 
 """"""""""""""""""""
