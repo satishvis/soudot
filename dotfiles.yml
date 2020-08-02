@@ -15,6 +15,9 @@
     - role: tmux
       tags:
         - tmux
+    - role: bat
+      tags:
+        - bat
     - role: fzf
       tags:
         - fzf
