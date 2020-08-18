@@ -30,3 +30,6 @@
     - role: ranger
       tags:
         - ranger
+    - role: nginx
+      tags:
+        - nginx

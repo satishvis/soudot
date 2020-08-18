@@ -8,6 +8,7 @@ set -e
 ROOTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DOTFILES_VARS="$ROOTDIR/.envrc"
 DOTFILES_HOSTS="$ROOTDIR/hosts"
+DOTFILES_PLAYBOOK_SUDO="$ROOTDIR/set_sudoer.yml"
 DOTFILES_PLAYBOOK="$ROOTDIR/dotfiles.yml"
 DOTFILES_CUSTOM_CONFIG="$ROOTDIR/vars/custom.yml"
 
@@ -117,6 +118,8 @@ then
     echo "---" > "$DOTFILES_CUSTOM_CONFIG"
 fi
 
+sudo ansible-playbook -i "$DOTFILES_HOSTS" "$DOTFILES_PLAYBOOK"
+
 sudo -u "$DOTFILES_BOOTSTRAP_USER" \
   DOTFILES_BOOTSTRAP_ROOT="$DOTFILES_BOOTSTRAP_ROOT" \
   DOTFILES_BOOTSTRAP_USER="$DOTFILES_BOOTSTRAP_USER" \
@@ -124,7 +127,7 @@ sudo -u "$DOTFILES_BOOTSTRAP_USER" \
   DOTFILES_BOOTSTRAP_GIT_NAME="$DOTFILES_BOOTSTRAP_GIT_NAME" \
   DOTFILES_BOOTSTRAP_GIT_EMAIL="$DOTFILES_BOOTSTRAP_GIT_EMAIL" \
   ansible-playbook -i "$DOTFILES_HOSTS" "$DOTFILES_PLAYBOOK" \
-  --ask-become-pass \
   --tags "$TAG"
+ansible-playbook -i "$DOTFILES_HOSTS" nginx_install.yml -b
 
 exit 0
