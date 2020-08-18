@@ -58,8 +58,12 @@ call plug#end()
 
 let mapleader = ','
 noremap <Leader>ff :FZF<CR>
+
+""""""""
+" Others
 nnoremap ,w :update<CR>
 nnoremap ;; :
+inoremap jk <ESC>
 
 """"""""""""""""""""
 " VIm Airline config
