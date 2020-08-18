@@ -128,6 +128,5 @@ sudo -u "$DOTFILES_BOOTSTRAP_USER" \
   DOTFILES_BOOTSTRAP_GIT_EMAIL="$DOTFILES_BOOTSTRAP_GIT_EMAIL" \
   ansible-playbook -i "$DOTFILES_HOSTS" "$DOTFILES_PLAYBOOK" \
   --tags "$TAG"
-ansible-playbook -i "$DOTFILES_HOSTS" nginx_install.yml -b
 
 exit 0
