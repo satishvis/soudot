@@ -1,8 +1,8 @@
 server {
-    server_name 52.66.201.85;
+    server_name <your-ip-here>;
     access_log off;
     location /static/ {
-        alias /home/ubuntu/dorfrbackend/static/;
+        alias /home/ubuntu/<your_projectname>/static/;
     }
     location / {
 	proxy_set_header Host $host;
