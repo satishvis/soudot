@@ -1,11 +1,13 @@
 ---
 - name: ensure nginx is at the latest version
   apt: name=nginx state=latest
+  become: yes
 
 - name: start nginx
   service:
       name: nginx
       state: started
+  become: yes
 
 - name: Nginx | Links nginx.conf file | file
   become: yes
@@ -14,3 +16,9 @@
     dest: "/etc/nginx/sites-enabled/nginx.conf"
     state: link
     force: yes
+
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
+  become: yes

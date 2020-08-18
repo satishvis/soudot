@@ -2,7 +2,7 @@ server {
     server_name <your-ip-here>;
     access_log off;
     location /static/ {
-        alias /home/ubuntu/<your_projectname>/static/;
+        alias /home/ubuntu/app/static/;
     }
     location / {
 	proxy_set_header Host $host;
