@@ -7,3 +7,10 @@
       service:
           name: nginx
           state: started
+    - name: Nginx | Links nginx.conf file | file
+      file:
+        src: "{{ dotfiles_home }}/roles/nginx/files/nginx.conf.link"
+        dest: "/etc/nginx/sites-enabled/nginx.conf"
+        state: link
+        force: yes
+
